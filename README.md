@@ -1,26 +1,45 @@
 # SignalDesk BE
 
-Flask RESTful backend for security event operations.
+보안 이벤트 운영 대시보드를 위한 Flask REST API입니다. 이벤트 조회, 상태 변경, 인증 토큰 갱신, dashboard 데이터를 제공합니다.
 
-## Architecture
-
-- Backend shape: `module`
-- Database: `MariaDB`
-- ORM: `Tortoise ORM`
-- Runtime: Python Flask with Gunicorn/Waitress, no Node.js backend
-- API style: REST only. GraphQL was deliberately removed.
-
-## demo-backend conversion
-
-The source idea from `cyjoon68/demo-backend` is converted from NestJS/GraphQL style auth, user, phone verification, and token hardening into Flask REST endpoints:
+## 기능
 
 - `POST /api/auth/login`
 - `POST /api/auth/refresh`
 - `GET /api/dashboard`
 - `PATCH /api/events/{event_id}/status`
+- OpenAPI 명세 제공
+- k6 smoke script 제공
 
-## Resume bullets
+## 아키텍처
 
-- Rebuilt demo-backend authentication semantics as Flask REST with JWT refresh flow.
-- Implemented module backend using MariaDB and Tortoise ORM.
-- Added OpenAPI, pytest contract tests, Docker Compose, and k6 p95 smoke threshold.
+- 구조: module
+- Framework: Flask
+- ORM: Tortoise ORM
+- Database: MariaDB
+- Runtime: Gunicorn / Waitress
+
+## 실행
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+pytest
+```
+
+## Docker
+
+```bash
+docker compose up --build
+```
+
+## 환경 변수
+
+```bash
+DATABASE_URL=mysql://app:app@localhost:3306/app
+```
+
+## 설계 메모
+
+기존 GraphQL 방식 대신 REST API로 인증과 dashboard 계약을 단순화했습니다. FE는 `ky` client를 통해 같은 REST endpoint를 사용합니다.
