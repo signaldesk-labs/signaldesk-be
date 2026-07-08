@@ -1,5 +1,9 @@
 # SignalDesk BE
 
+![Python](https://img.shields.io/badge/Python-3.12-3776ab?logo=python)
+![Flask](https://img.shields.io/badge/Flask-REST-000000?logo=flask)
+![MariaDB](https://img.shields.io/badge/MariaDB-Tortoise_ORM-003545?logo=mariadb)
+
 보안 이벤트 운영 대시보드를 위한 Flask REST API입니다. 이벤트 조회, 상태 변경, 인증 토큰 갱신, dashboard 데이터를 제공합니다.
 
 ## 기능
