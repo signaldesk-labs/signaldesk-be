@@ -1,0 +1,26 @@
+openapi: 3.1.0
+info:
+  title: SignalDesk REST API
+  version: 0.1.0
+  description: Flask RESTful API converted from demo-backend semantics. GraphQL removed.
+paths:
+  /api/auth/login:
+    post:
+      responses:
+        "200":
+          description: JWT access token
+  /api/auth/refresh:
+    post:
+      responses:
+        "200":
+          description: refreshed JWT token
+  /api/dashboard:
+    get:
+      responses:
+        "200":
+          description: dashboard metrics, events, and D3 trend source data
+  /api/events/{event_id}/status:
+    patch:
+      responses:
+        "200":
+          description: updated event
